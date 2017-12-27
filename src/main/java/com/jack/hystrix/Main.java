@@ -5,11 +5,11 @@ import rx.Observer;
 
 public class Main {
   public static void main(String[] args) throws Exception {
-//    GetNameCommand gnc = new GetNameCommand("abc");
-//    System.out.println(gnc.execute());
+    GetNameCommand gnc = new GetNameCommand("abc");
+    System.out.println(gnc.execute());
 
     GetNameObservableCommand gnoc = new GetNameObservableCommand("bcd");
-    Observable o = gnoc.construct();
+    Observable o = gnoc.observe();
 
     o.subscribe(new Observer<String>() {
       public void onCompleted() {

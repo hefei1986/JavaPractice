@@ -15,11 +15,10 @@ public class GetNameCommand extends HystrixCommand<String> {
   @Override
   protected String run() throws Exception {
     throw new Exception("abc");
-//    return name;
   }
 
-//  @Override
-//  protected String getFallback() {
-//    return "fallback";
-//  }
+  @Override
+  protected String getFallback() {
+    return "fallback";
+  }
 }

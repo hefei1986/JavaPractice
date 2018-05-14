@@ -2,11 +2,21 @@ package com.jack.hystrix;
 
 import rx.Observable;
 import rx.Observer;
+import sun.jvm.hotspot.runtime.Threads;
 
 public class Main {
   public static void main(String[] args) throws Exception {
     GetNameCommand gnc = new GetNameCommand("abc");
-    System.out.println(gnc.execute());
+    Observable<String> gnco = gnc.observe();
+    System.out.println("1");
+    Thread.sleep(1000);
+    gnco.subscribe((s) -> {System.out.println(s);});
+    System.out.println("2");
+
+
+    if (true) {
+      return;
+    }
 
     GetNameObservableCommand gnoc = new GetNameObservableCommand("bcd");
     Observable o = gnoc.observe();
